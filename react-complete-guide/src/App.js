@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+
+import "../node_modules/bootstrap/dist/css/bootstrap.css"
+
 import Person from './Person/Person';
+import OutputUser from './Person/OutputUser';
+import UserInput from './UserInput/UserInput';
+import UserOutput from './UserOutput/UserOutput';
+import PersonForm from './PersonForm/PersonForm';
 
 class App extends Component {
 
@@ -9,7 +16,9 @@ class App extends Component {
       {name: "Max", age: 28},
       {name: "Manu", age: 25},
       {name: "jhon", age: 18}
-    ]
+    ],
+    username: "Super Avinash",
+    showPerson: false
   }
 
 
@@ -22,6 +31,18 @@ class App extends Component {
     font: 'inherit'
         }
 
+    let persons = null;
+        if(this.state.showPerson){
+        persons = (
+          <div>
+            {this.state.person.map(person =>{
+              return <Person name={person.name} age={person.age} />
+            })}
+        </div> 
+        ) 
+
+        }
+
     return (
       <div className="App">
         
@@ -29,12 +50,38 @@ class App extends Component {
           <p>This is really working..</p>
 
           <button style = {style} onClick= { () => this.switchNameHandler("MAHAMUNE") }>Switch Name</button>
-          <Person name = {this.state.person[0].name} age = {this.state.person[0].age}></Person>
-          <Person name = {this.state.person[1].name} age = {this.state.person[1].age} click = {this.switchNameHandler.bind(this,"Ganesh")}></Person>
-          <Person name = {this.state.person[2].name} age = {this.state.person[2].age} changed = {this.changeNameHandler}></Person>             
+          <button style = {style} onClick= {this.showPersonHandler}>Show Person</button>
+         
+          
 
+      {/* <OutputUser /> */}
+
+      <br /><br />
+      
+      {persons}
+
+      <h2>Assignment 1st</h2>
+      <UserInput changed = {this.changeUserNameHandler} currentName = {this.state.username} />
+      <UserOutput userName = {this.state.username} />
+      <UserOutput userName = {this.state.username} />
+      <UserOutput userName = "AVIANSH" />
+
+      <br /><br />
+      <PersonForm />
+      
+
+      <br /><br /><br /><br />
       </div>
     );
+  }
+
+
+  showPersonHandler = () => {
+    const doesShow = this.state.showPerson;
+    
+    this.setState({
+      showPerson: !doesShow
+    })
   }
 
     changeNameHandler = (event) => {
@@ -59,7 +106,13 @@ class App extends Component {
     )
   }
 
- 
+  
+  changeUserNameHandler = (event)=> {
+    this.setState({
+      username : event.target.value
+    })
+  }
+
 
 }
 
