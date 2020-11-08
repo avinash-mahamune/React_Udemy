@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "radium": "^0.26.1",
+=======
+    "bootstrap": "^4.5.2",
+>>>>>>> 29ea6042c34ee10ca5e911f33cf31be66a3dd5ae
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "1.1.5",
