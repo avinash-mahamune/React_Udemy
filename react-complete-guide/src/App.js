@@ -7,7 +7,14 @@ import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
 import PersonForm from './PersonForm/PersonForm';
 
+import Product from './Product'
+
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    // console.log('[App.js] constructor..');
+  }
 
   state = {
     person: [
@@ -18,9 +25,17 @@ class App extends Component {
     showPerson: false
   }
 
+  static getDerivedStateFromProps(props, state){
+    // console.log('[App.js] getDerivedStateFromProps.. ',props);
+    return state;
+  }
 
+  componentDidMount(){
+    // console.log('[App.js] componentDidMount');
+  }
   render() {
-    
+    // console.log('[App.js] Render...') ;
+
   const btnStyle = {
     backgroundColor: 'green',
     color: '#fff',
@@ -88,6 +103,10 @@ class App extends Component {
           <button style = {btnStyle} onClick= { this.togglePersonHandler}>show/hide</button>
           <button  onClick= { () => this.switchNameHandler("MAHAMUNE") }>Switch Name</button>       
           {personData}
+          <div>
+            <h1>React Life Cycle</h1>
+            <Product />
+          </div>
       </div>
     );
   }
