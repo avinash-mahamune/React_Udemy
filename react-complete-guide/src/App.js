@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium';
+// import Radium from 'radium';
 import Person from './Person/Person';
 import OutputUser from './Person/OutputUser';
 import UserInput from './UserInput/UserInput';
@@ -157,4 +157,4 @@ class App extends Component {
 
 }
 
-export default Radium(App);
+export default App;
